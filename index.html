@@ -6,22 +6,23 @@
 <title>AIクレジット定点観測 — 2026-10-02</title>
 <style>
 :root{
-  color-scheme: light dark;
-  --bg:#f1f5f9; --card:#ffffff; --card2:#f8fafc; --line:#e2e8f0;
-  --text:#0f172a; --muted:#475569; --accent:#b45309;
-  --green:#15803d; --yellow:#a16207; --red:#b91c1c; --gray:#64748b;
+  color-scheme: light;
+  --bg:#f8fafc; --card:#ffffff; --card2:#f1f5f9; --line:#cbd5e1;
+  --text:#0f172a; --muted:#475569; --accent:#2563eb;
+  --green:#15803d; --yellow:#b45309; --red:#b91c1c; --gray:#64748b;
   --green-bg:#dcfce7; --yellow-bg:#fef3c7; --red-bg:#fee2e2; --gray-bg:#e2e8f0;
   --chart:#0284c7; --chart-fill:rgba(2,132,199,0.14);
-  --shadow:0 1px 3px rgba(15,23,42,0.08);
+  --shadow:0 1px 3px rgba(15,23,42,0.08), 0 1px 2px rgba(15,23,42,0.04);
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#0f172a; --card:#1e293b; --card2:#172033; --line:#334155;
-    --text:#f8fafc; --muted:#94a3b8; --accent:#fbbf24;
-    --green:#4ade80; --yellow:#facc15; --red:#f87171; --gray:#94a3b8;
-    --green-bg:#052e16; --yellow-bg:#422006; --red-bg:#450a0a; --gray-bg:#1e293b;
-    --chart:#38bdf8; --chart-fill:rgba(56,189,248,0.18);
-    --shadow:0 1px 3px rgba(0,0,0,0.4);
+    /* 社長要望: 暗すぎず、白基調でくっきり明るく見えるエレガントな高コントラスト配色 */
+    --bg:#f1f5f9; --card:#ffffff; --card2:#f8fafc; --line:#cbd5e1;
+    --text:#0f172a; --muted:#334155; --accent:#1d4ed8;
+    --green:#15803d; --yellow:#b45309; --red:#b91c1c; --gray:#475569;
+    --green-bg:#dcfce7; --yellow-bg:#fef3c7; --red-bg:#fee2e2; --gray-bg:#e2e8f0;
+    --chart:#0284c7; --chart-fill:rgba(2,132,199,0.14);
+    --shadow:0 1px 3px rgba(15,23,42,0.1);
   }
 }
 *{box-sizing:border-box;}
@@ -259,6 +260,194 @@ footer{margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
 <p class="muted" style="font-size:0.78rem;margin:0.6rem 0 0;">行をクリックすると、その会社の全観測（出所・信頼度つき）を表示します。「—」は測れていないことを意味し、安全という意味ではありません。</p>
 </div>
 <div class="panel" id="entity-detail" hidden></div>
+
+<!-- 🕸️ AIインフラ債務の連鎖破綻リスク相関図 -->
+<div class="panel" style="margin-top:1.5rem;border:2px solid #3b82f6;background:#ffffff;box-shadow:var(--shadow);">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+    <h3 style="margin:0;display:flex;align-items:center;gap:0.5rem;color:#0f172a;font-size:1.15rem;">
+      <span>🕸️</span><span>AIインフラ債務の連鎖破綻相関図（システミック・クレジット・ネットワーク）</span>
+    </h3>
+    <span style="font-size:0.75rem;padding:3px 8px;border-radius:9999px;background:#dbeafe;color:#1e40af;font-weight:700;">連鎖破綻リスクの全体マップ</span>
+  </div>
+  <p class="muted" style="margin:0 0 1.25rem;font-size:0.88rem;line-height:1.6;">
+    「未上場の赤字新興（OpenAI等）」や「ジャンク格付け（CoreWeave）」が抱える巨額リスクを、メガテックやシャドーバンクがどう肩代わりし、誰が最終的に損失を被るのか——資金・債務保証の相互連鎖構造です。
+  </p>
+
+  <!-- 4層フロー図 -->
+  <div style="display:flex;flex-direction:column;gap:0.75rem;">
+    
+    <!-- 第1層: 需要・赤字の震源 -->
+    <div style="background:#fff1f2;border:1.5px solid #fecdd3;border-radius:8px;padding:0.9rem 1rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+        <span style="font-weight:800;color:#9f1239;font-size:0.88rem;">① 需要・赤字の震源（AI新興企業・未上場）</span>
+        <span style="font-size:0.72rem;background:#ffe4e6;color:#be123c;padding:2px 6px;border-radius:4px;font-weight:700;">リスクの起点</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:0.75rem;">
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #fecdd3;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● OpenAI（未上場・上場未定）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            推定年数十億ドルの巨額赤字。自前の設備投資資金はなく、MicrosoftのAzure計算枠と巨額出資に全面依存。
+          </div>
+        </div>
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #fecdd3;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● CoreWeave（未上場・B+ジャンク格）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            GPU担保で75億ドル（約1.1兆円）を借入。Microsoftの長期リース契約（売上裏付け）が生命線。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 矢印1 -->
+    <div style="text-align:center;color:#3b82f6;font-size:0.85rem;font-weight:800;line-height:1;">
+      ⬇ 【債務肩代わり】巨額出資 / 長期計算資源購入確約 / 未開始リース契約 ⬇
+    </div>
+
+    <!-- 第2層: 中継・債務肩代わり（メガテック） -->
+    <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:0.9rem 1rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+        <span style="font-weight:800;color:#1e40af;font-size:0.88rem;">② 中継・債務肩代わり（メガテック各社）</span>
+        <span style="font-size:0.72rem;background:#dbeafe;color:#1d4ed8;padding:2px 6px;border-radius:4px;font-weight:700;">巨額簿外債務の抱え込み</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:0.75rem;">
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #bfdbfe;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● Microsoft（簿外債務: 約50兆円）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            3,291億ドルの未開始リース。OpenAIの赤字計算資源を下支えし、CoreWeave・原発PPA等の長期契約を抱える。
+          </div>
+        </div>
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #bfdbfe;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● Meta（簿外債務: 約42兆円）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            2,789億ドルの未開始リース。4兆円規模のHyperionデータセンターでBlue Owlに借入を代行させ自社はリース。
+          </div>
+        </div>
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #bfdbfe;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● Oracle</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            OpenAI向けにテキサス州の超巨大DC（150億ドル規模）をCrusoe/Blue Owlから長期賃借契約。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 矢印2 -->
+    <div style="text-align:center;color:#8b5cf6;font-size:0.85rem;font-weight:800;line-height:1;">
+      ⬇ 【オフバランス化】合弁会社（JV）設立 / 80%借入代行 / 巨額プライベートデット ⬇
+    </div>
+
+    <!-- 第3層: 借入代行・資金供給（シャドーバンク・JV） -->
+    <div style="background:#faf5ff;border:1.5px solid #e9d5ff;border-radius:8px;padding:0.9rem 1rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+        <span style="font-weight:800;color:#6b21a8;font-size:0.88rem;">③ 借入代行・資金供給装置（シャドーバンク・オルタナティブ運用会社）</span>
+        <span style="font-size:0.72rem;background:#f3e8ff;color:#7e22ce;padding:2px 6px;border-radius:4px;font-weight:700;">影の貸し手</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:0.75rem;">
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #e9d5ff;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● Blue Owl Capital（OWL）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            Metaの270億ドルJV（80%借入）、OpenAI向け150億ドルJVを主導。DCオフバランスの最大手。
+          </div>
+        </div>
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #e9d5ff;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● Blackstone（BX / QTS）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            傘下QTSで数兆円のAIメガキャンパスを建設しメガテックへ賃貸。CoreWeaveへ大型デット融資。
+          </div>
+        </div>
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #e9d5ff;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● Brookfield（Compass）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            Compass Datacentersで数十億ドルのAI施設を開発し、Microsoftが全量長期リース。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 矢印3 -->
+    <div style="text-align:center;color:#d97706;font-size:0.85rem;font-weight:800;line-height:1;">
+      ⬇ 【リスク波及】公募BDCファンド出資 / 社債引受 / 銀行団融資 / 再保険 ⬇
+    </div>
+
+    <!-- 第4層: 最終リスク受け皿（市場への波及） -->
+    <div style="background:#fffbeb;border:1.5px solid #fde68a;border-radius:8px;padding:0.9rem 1rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+        <span style="font-weight:800;color:#92400e;font-size:0.88rem;">④ 最終リスク受け皿（連鎖破綻の最終着火点）</span>
+        <span style="font-size:0.72rem;background:#fef3c7;color:#b45309;padding:2px 6px;border-radius:4px;font-weight:700;">損失の最終負担者</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:0.75rem;">
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #fde68a;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● 上場BDC（OBDC等）・年金基金・個人投資家</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            プライベートクレジットの焦げ付きが「P/NAV（純資産倍率）の割れ・分配金減配」として直撃。
+          </div>
+        </div>
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #fde68a;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● BBB格社債市場（Digital Realty等のREIT・電力会社）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            DC空室化で借入返済不能に。BBBからBB格（ジャンク）転落で世界の年金が強制売却。
+          </div>
+        </div>
+        <div style="background:#ffffff;padding:0.7rem;border-radius:6px;border:1px solid #fde68a;">
+          <div style="font-weight:700;color:#0f172a;font-size:0.85rem;">● シニアローン・CLO市場（BKLN等）</div>
+          <div style="font-size:0.78rem;color:#475569;line-height:1.4;margin-top:0.2rem;">
+            変動金利ローンのデフォルト増加により、CLO（債権担保証券）の価格暴落と流動性枯渇。
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 3大ドミノ倒しシナリオ -->
+  <div style="margin-top:1.25rem;border-top:1px dashed #cbd5e1;padding-top:1rem;">
+    <div style="font-weight:800;color:#0f172a;font-size:0.95rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem;">
+      <span>⚡</span><span>もし一つが崩れたら？ 3大連鎖破綻（ドミノ倒し）シナリオ</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:0.9rem;">
+      
+      <!-- シナリオ1 -->
+      <div style="background:#f8fafc;padding:0.9rem;border:1px solid #e2e8f0;border-left:4px solid #ef4444;border-radius:6px;">
+        <div style="font-weight:700;color:#b91c1c;font-size:0.88rem;margin-bottom:0.4rem;">
+          シナリオA：OpenAIの資金枯渇・上場延期
+        </div>
+        <ol style="margin:0;padding-left:1.2rem;font-size:0.8rem;line-height:1.6;color:#334155;">
+          <li>OpenAIが巨額赤字に耐えられず計算利用料を支払不能に陥る。</li>
+          <li><strong>Microsoft</strong>が約50兆円の未開始リース等の巨額減損を直撃被弾。注記の簿外債務が一気に損失化し利益が蒸発。</li>
+          <li><strong>Oracle</strong>が150億ドルDCの賃料を払い切れず赤字転落。</li>
+          <li><strong>Blue Owl</strong>の150億ドル債権が不良債権化。上場BDC（OBDC）のNAV暴落で一般投資家へパニック波及。</li>
+        </ol>
+      </div>
+
+      <!-- シナリオ2 -->
+      <div style="background:#f8fafc;padding:0.9rem;border:1px solid #e2e8f0;border-left:4px solid #f59e0b;border-radius:6px;">
+        <div style="font-weight:700;color:#b45309;font-size:0.88rem;margin-bottom:0.4rem;">
+          シナリオB：CoreWeave破綻・GPU担保割れ
+        </div>
+        <ol style="margin:0;padding-left:1.2rem;font-size:0.8rem;line-height:1.6;color:#334155;">
+          <li>次世代チップ登場でCoreWeave保有の旧型GPU担保価値が急落。</li>
+          <li>75億ドル超の借入がデフォルト（債務不履行）。</li>
+          <li>融資元の<strong>Blackstone や Blue Owl</strong> が巨額の貸倒引当金を計上。</li>
+          <li><strong>Microsoft</strong> は代替インフラ調達に追われ、巨額の追加キャッシュ流出を強いられる。</li>
+        </ol>
+      </div>
+
+      <!-- シナリオ3 -->
+      <div style="background:#f8fafc;padding:0.9rem;border:1px solid #e2e8f0;border-left:4px solid #8b5cf6;border-radius:6px;">
+        <div style="font-weight:700;color:#6d28d9;font-size:0.88rem;margin-bottom:0.4rem;">
+          シナリオC：メガテックのAI投資減速（損切り）
+        </div>
+        <ol style="margin:0;padding-left:1.2rem;font-size:0.8rem;line-height:1.6;color:#334155;">
+          <li>投資家からのROE悪化批判に耐えかね、メガテックが新規DCのリース契約を絞る。</li>
+          <li><strong>Digital RealtyやQTS</strong>などのDCが空室化。先行投資した巨額借入の返済不能懸念が台頭。</li>
+          <li><strong>BBB格からBB格（ジャンク）へ格下げドミノ（フォーリン・エンジェル）</strong>が発生。</li>
+          <li>世界の年金基金・生保が規約上保有できず強制投げ売り、社債市場全体が暴落。</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <div class="panel" style="margin-top:1.5rem;border-left:4px solid var(--accent);background:var(--card2);">
 <h3 style="margin-top:0;display:flex;align-items:center;gap:0.5rem;color:var(--text);">
