@@ -261,143 +261,207 @@ footer{margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
 </div>
 <div class="panel" id="entity-detail" hidden></div>
 
-<!-- 🕸️ AIインフラ債務の連鎖破綻リスク相関図（MOTAスタイル インタラクティブUI） -->
+<!-- 🕸️ AIエコシステムの資金循環マップ（ラウンドトリッピング ＆ 連鎖破綻ネットワーク） -->
 <div class="panel" style="margin-top:1.5rem;border:2px solid #2563eb;background:#ffffff;box-shadow:var(--shadow);border-radius:12px;padding:1.25rem;">
   <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
     <h3 style="margin:0;display:flex;align-items:center;gap:0.5rem;color:#0f172a;font-size:1.15rem;">
-      <span>🕸️</span><span>AIインフラ債務の連鎖破綻相関図（システミック・クレジット・ネットワーク）</span>
+      <span>🕸️</span><span>AIエコシステムの資金循環マップ（キャッシュフロー ＆ 連鎖破綻ネットワーク）</span>
     </h3>
     <span style="font-size:0.75rem;padding:3px 10px;border-radius:9999px;background:#dbeafe;color:#1e40af;font-weight:700;">
-      💡 矢印やボタンを押すと右側に詳細が出ます
+      💡 各ノードや矢印ボタンを押すと右側に詳細が出ます
     </span>
   </div>
   <p class="muted" style="margin:0 0 1rem;font-size:0.88rem;line-height:1.5;">
-    どことどこが、どのような名目で借入・保証しているかを全体図で俯瞰できます。<strong>矢印やルートを選択すると、右側に貸借関係・金額・使途・連鎖破綻リスクが即座に表示されます。</strong>
+    メガテック、NVIDIA、未上場AI新興、シャドーバンク間で<strong>「出資 ⇄ GPU購入 ⇄ クラウド利用料返還 ⇄ 借入代行」</strong>がどう自己循環（ラウンドトリッピング）しているかを全体図で可視化しています。
   </p>
 
-  <!-- クイック選択タブ（スマホ・PC両対応） -->
-  <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;" id="rel-tabs">
-    <button type="button" class="rel-btn" data-rel="msft_blueowl" style="cursor:pointer;padding:0.35rem 0.75rem;border-radius:6px;border:1.5px solid #2563eb;background:#eff6ff;color:#1e40af;font-weight:700;font-size:0.8rem;">
-      ① Meta ➔ Blue Owl（4兆円借入代行）
+  <!-- クイック選択タブ（全8大循環ルート） -->
+  <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.1rem;" id="rel-tabs">
+    <button type="button" class="rel-btn" data-rel="openai_nvidia" style="cursor:pointer;padding:0.35rem 0.7rem;border-radius:6px;border:1.5px solid #2563eb;background:#eff6ff;color:#1e40af;font-weight:700;font-size:0.78rem;">
+      ① OpenAI ➔ NVIDIA（$1,000億GPU）
     </button>
-    <button type="button" class="rel-btn" data-rel="openai_msft" style="cursor:pointer;padding:0.35rem 0.75rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.8rem;">
-      ② OpenAI ➔ MSFT（赤字肩代わり）
+    <button type="button" class="rel-btn" data-rel="msft_openai" style="cursor:pointer;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.78rem;">
+      ② MSFT ⇆ OpenAI（$580億出資 ⇄ 還流）
     </button>
-    <button type="button" class="rel-btn" data-rel="msft_coreweave" style="cursor:pointer;padding:0.35rem 0.75rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.8rem;">
-      ③ MSFT ➔ CoreWeave（1.1兆円借入保証）
+    <button type="button" class="rel-btn" data-rel="bigtech_nvidia" style="cursor:pointer;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.78rem;">
+      ③ メガテック ➔ NVIDIA（$3,000億爆買い）
     </button>
-    <button type="button" class="rel-btn" data-rel="oracle_blueowl" style="cursor:pointer;padding:0.35rem 0.75rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.8rem;">
-      ④ OpenAI/Oracle ➔ Blue Owl（2.2兆円DC）
+    <button type="button" class="rel-btn" data-rel="anthropic_cloud" style="cursor:pointer;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.78rem;">
+      ④ Anthropic ⇆ Google/Amazon（出資⇄還元）
     </button>
-    <button type="button" class="rel-btn" data-rel="blueowl_bdc" style="cursor:pointer;padding:0.35rem 0.75rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.8rem;">
-      ⑤ Blue Owl ➔ BDC/年金（最終リスク波及）
+    <button type="button" class="rel-btn" data-rel="oracle_nvidia" style="cursor:pointer;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.78rem;">
+      ⑤ Oracle ⇆ NVIDIA ⇆ OpenAI（DC提供）
+    </button>
+    <button type="button" class="rel-btn" data-rel="coreweave_msft" style="cursor:pointer;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.78rem;">
+      ⑥ CoreWeave ⇆ MSFT（1.1兆円GPU担保）
+    </button>
+    <button type="button" class="rel-btn" data-rel="musk_xai" style="cursor:pointer;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.78rem;">
+      ⑦ Tesla ➔ Musk ➔ xAI（株売却➔GPU）
+    </button>
+    <button type="button" class="rel-btn" data-rel="shadow_bank_bdc" style="cursor:pointer;padding:0.35rem 0.7rem;border-radius:6px;border:1px solid #cbd5e1;background:#ffffff;color:#475569;font-weight:600;font-size:0.78rem;">
+      ⑧ Blue Owl / BDC ➔ 年金（借入代行・波及）
     </button>
   </div>
 
-  <!-- 2カラム連動エリア（左：MOTAスタイル相関図、右：詳細説明パネル） -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));gap:1.25rem;align-items:stretch;">
+  <!-- 2カラム連動エリア（左：資金循環ビジュアルマップ、右：詳細説明パネル） -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(360px, 1fr));gap:1.25rem;align-items:stretch;">
     
-    <!-- 左側：ビジュアル相関図（ノード＆矢印ボタン） -->
-    <div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;padding:1.1rem;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:0.75rem;">
+    <!-- 左側：全体資金循環グラフィカルマップ -->
+    <div style="background:#f8fafc;border:1.5px solid #cbd5e1;border-radius:10px;padding:1rem;position:relative;display:flex;flex-direction:column;gap:0.8rem;box-shadow:inset 0 1px 2px rgba(0,0,0,0.02);">
       
-      <!-- 上段: 赤字AI新興 -->
-      <div style="text-align:center;">
-        <div style="font-size:0.75rem;font-weight:700;color:#9f1239;margin-bottom:0.25rem;">【需要・赤字の震源】</div>
-        <div style="display:inline-flex;align-items:center;justify-content:center;background:#ffe4e6;border:2px solid #f43f5e;color:#881337;padding:0.45rem 1.2rem;border-radius:9999px;font-weight:800;font-size:0.9rem;box-shadow:0 2px 4px rgba(244,63,94,0.15);">
-          🤖 OpenAI（未上場・巨額赤字）
+      <!-- 【上段】クラウド・インフラ供給者＆他投資家 -->
+      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:0.4rem;">
+        <button type="button" class="arrow-badge" data-rel="oracle_nvidia" style="cursor:pointer;background:#ffffff;border:1.5px solid #ef4444;border-radius:6px;padding:0.4rem 0.2rem;text-align:center;">
+          <div style="font-size:0.7rem;font-weight:800;color:#b91c1c;">🔴 Oracle</div>
+          <div style="font-size:0.65rem;color:#64748b;">$100億投資受入</div>
+        </button>
+        <button type="button" class="arrow-badge" data-rel="msft_openai" style="cursor:pointer;background:#ffffff;border:1.5px solid #2563eb;border-radius:6px;padding:0.4rem 0.2rem;text-align:center;">
+          <div style="font-size:0.7rem;font-weight:800;color:#1d4ed8;">🟦 Microsoft他</div>
+          <div style="font-size:0.65rem;color:#64748b;">$580億出資/枠</div>
+        </button>
+        <button type="button" class="arrow-badge" data-rel="openai_nvidia" style="cursor:pointer;background:#ffffff;border:1.5px solid #334155;border-radius:6px;padding:0.4rem 0.2rem;text-align:center;">
+          <div style="font-size:0.7rem;font-weight:800;color:#0f172a;">⚫ AMD</div>
+          <div style="font-size:0.65rem;color:#64748b;">$1,000億調達</div>
+        </button>
+        <button type="button" class="arrow-badge" data-rel="coreweave_msft" style="cursor:pointer;background:#ffffff;border:1.5px solid #8b5cf6;border-radius:6px;padding:0.4rem 0.2rem;text-align:center;">
+          <div style="font-size:0.7rem;font-weight:800;color:#6d28d9;">🟣 CoreWeave</div>
+          <div style="font-size:0.65rem;color:#64748b;">$数百億GPU貸出</div>
+        </button>
+      </div>
+
+      <!-- 上段と中段の接続矢印 -->
+      <div style="display:flex;justify-content:space-around;align-items:center;font-size:0.72rem;font-weight:700;">
+        <span style="color:#b91c1c;">⬇ $数千億GPU発注</span>
+        <button type="button" class="arrow-badge" data-rel="msft_openai" style="cursor:pointer;background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:700;">
+          ⬇ 出資 $580億 ⇄ 還流 $数百億 ⬆
+        </button>
+        <span style="color:#6d28d9;">⬆ GPU枠提供</span>
+      </div>
+
+      <!-- 【中段】中核プレイヤー（NVIDIA ＆ OpenAI ＆ イーロン・マスク） -->
+      <div style="display:grid;grid-template-columns:1.1fr 1fr 1.1fr;gap:0.5rem;align-items:center;">
+        
+        <!-- 左：NVIDIA -->
+        <button type="button" class="arrow-badge" data-rel="bigtech_nvidia" style="cursor:pointer;background:#f0fdf4;border:2px solid #16a34a;border-radius:8px;padding:0.6rem 0.4rem;text-align:center;box-shadow:var(--shadow);">
+          <div style="font-size:0.88rem;font-weight:900;color:#15803d;display:flex;align-items:center;justify-content:center;gap:0.3rem;">
+            <span>🟩</span><span>NVIDIA</span>
+          </div>
+          <div style="font-size:0.68rem;color:#166534;font-weight:700;margin-top:2px;">【利益の吸引ハブ】</div>
+          <div style="font-size:0.65rem;color:#475569;line-height:1.2;margin-top:2px;">GPU独占供給<br>粗利益率 75%超</div>
+        </button>
+
+        <!-- 中央：OpenAI -->
+        <div style="display:flex;flex-direction:column;gap:0.3rem;align-items:center;">
+          <button type="button" class="arrow-badge" data-rel="openai_nvidia" style="width:100%;cursor:pointer;background:#ffffff;border:1px dashed #16a34a;color:#15803d;padding:2px 4px;border-radius:4px;font-size:0.68rem;font-weight:700;">
+            ⬅ $1,000億 GPU発注
+          </button>
+          <button type="button" class="arrow-badge" data-rel="openai_nvidia" style="width:100%;cursor:pointer;background:#fff1f2;border:2px solid #f43f5e;border-radius:8px;padding:0.6rem 0.4rem;text-align:center;box-shadow:var(--shadow);">
+            <div style="font-size:0.85rem;font-weight:900;color:#9f1239;">🤖 OpenAI</div>
+            <div style="font-size:0.68rem;color:#be123c;font-weight:700;">【赤字の震源】</div>
+            <div style="font-size:0.65rem;color:#475569;">未上場・年数千億赤字</div>
+          </button>
+          <button type="button" class="arrow-badge" data-rel="openai_nvidia" style="width:100%;cursor:pointer;background:#ffffff;border:1px dashed #2563eb;color:#1d4ed8;padding:2px 4px;border-radius:4px;font-size:0.68rem;font-weight:700;">
+            資金提供・出資 ➡
+          </button>
         </div>
-      </div>
 
-      <!-- 中段上：矢印と関係 -->
-      <div style="display:flex;justify-content:space-around;align-items:center;gap:0.5rem;">
-        <button type="button" class="arrow-badge" data-rel="openai_msft" style="cursor:pointer;background:#ffffff;border:1.5px solid #2563eb;color:#1e40af;padding:0.35rem 0.65rem;border-radius:6px;font-size:0.75rem;font-weight:700;box-shadow:var(--shadow);">
-          ⬇ 計算枠保証・赤字肩代わり
-        </button>
-        <button type="button" class="arrow-badge" data-rel="oracle_blueowl" style="cursor:pointer;background:#ffffff;border:1.5px solid #8b5cf6;color:#6b21a8;padding:0.35rem 0.65rem;border-radius:6px;font-size:0.75rem;font-weight:700;box-shadow:var(--shadow);">
-          ⬇ 150億ドルDC（Oracle経由）
-        </button>
-      </div>
-
-      <!-- 中段: メガテック各社 -->
-      <div>
-        <div style="text-align:center;font-size:0.75rem;font-weight:700;color:#1e40af;margin-bottom:0.25rem;">【債務肩代わり・未開始リース抱え込み】</div>
-        <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
-          <div style="background:#eff6ff;border:2px solid #3b82f6;color:#1e3a8a;padding:0.45rem 0.9rem;border-radius:8px;font-weight:800;font-size:0.85rem;text-align:center;box-shadow:var(--shadow);">
-            🏢 Microsoft<br><span style="font-size:0.72rem;font-weight:400;color:#2563eb;">未開始リース約50兆円</span>
+        <!-- 右：イーロン・マスク エコシステム -->
+        <button type="button" class="arrow-badge" data-rel="musk_xai" style="cursor:pointer;background:#fafaf9;border:1.5px solid #44403c;border-radius:8px;padding:0.5rem 0.4rem;text-align:center;">
+          <div style="font-size:0.75rem;font-weight:800;color:#1c1917;">👤 Elon Musk</div>
+          <div style="font-size:0.65rem;color:#57534e;line-height:1.3;margin-top:2px;">
+            Tesla株売却益 ➔ X買収<br>
+            ➔ <strong>xAI</strong>へ出資<br>
+            ➔ 10万基GPU爆買い
           </div>
-          <div style="background:#eff6ff;border:2px solid #3b82f6;color:#1e3a8a;padding:0.45rem 0.9rem;border-radius:8px;font-weight:800;font-size:0.85rem;text-align:center;box-shadow:var(--shadow);">
-            🏢 Meta<br><span style="font-size:0.72rem;font-weight:400;color:#2563eb;">未開始リース約42兆円</span>
-          </div>
-        </div>
+        </button>
+
       </div>
 
-      <!-- 中段下：矢印と関係 -->
-      <div style="display:flex;justify-content:space-around;align-items:center;gap:0.5rem;">
-        <button type="button" class="arrow-badge" data-rel="msft_coreweave" style="cursor:pointer;background:#ffffff;border:1.5px solid #d97706;color:#b45309;padding:0.35rem 0.65rem;border-radius:6px;font-size:0.75rem;font-weight:700;box-shadow:var(--shadow);">
-          ⬇ GPUリース保証（75億ドル）
+      <!-- 中段と下段の接続矢印 -->
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:0 0.5rem;">
+        <button type="button" class="arrow-badge" data-rel="bigtech_nvidia" style="cursor:pointer;background:#ffffff;border:1.5px solid #16a34a;color:#15803d;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.72rem;font-weight:800;">
+          ⬆ $3,000億 GPU爆買い ⬆
         </button>
-        <button type="button" class="arrow-badge" data-rel="msft_blueowl" style="cursor:pointer;background:#eff6ff;border:2px solid #2563eb;color:#1e40af;padding:0.35rem 0.65rem;border-radius:6px;font-size:0.75rem;font-weight:800;box-shadow:var(--shadow);">
-          ⬇ 4兆円借入代行（80%JV）
+        <button type="button" class="arrow-badge" data-rel="anthropic_cloud" style="cursor:pointer;background:#fffbeb;border:1.5px solid #d97706;color:#92400e;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.72rem;font-weight:700;">
+          $数十億出資 ⇄ クラウド返還 ⬇
         </button>
       </div>
 
-      <!-- 下段: シャドーバンク＆貸手 -->
-      <div>
-        <div style="text-align:center;font-size:0.75rem;font-weight:700;color:#6b21a8;margin-bottom:0.25rem;">【借入代行装置・シャドーバンク】</div>
-        <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
-          <div style="background:#faf5ff;border:2px solid #8b5cf6;color:#581c87;padding:0.45rem 0.8rem;border-radius:8px;font-weight:800;font-size:0.85rem;text-align:center;box-shadow:var(--shadow);">
-            💼 CoreWeave<br><span style="font-size:0.72rem;font-weight:400;color:#7c3aed;">B+ジャンク格</span>
+      <!-- 【下段】メガテック ＆ Anthropic ＆ シャドーバンク -->
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0.4rem;">
+        
+        <!-- メガテック3社 -->
+        <button type="button" class="arrow-badge" data-rel="bigtech_nvidia" style="cursor:pointer;background:#ffffff;border:1.5px solid #3b82f6;border-radius:8px;padding:0.5rem 0.4rem;text-align:left;">
+          <div style="font-size:0.75rem;font-weight:800;color:#1d4ed8;display:flex;gap:0.3rem;">
+            <span>G</span><span>Meta</span><span>Amazon</span>
           </div>
-          <div style="background:#faf5ff;border:2px solid #8b5cf6;color:#581c87;padding:0.45rem 0.8rem;border-radius:8px;font-weight:800;font-size:0.85rem;text-align:center;box-shadow:var(--shadow);">
-            💼 Blue Owl / Blackstone<br><span style="font-size:0.72rem;font-weight:400;color:#7c3aed;">プライベートクレジット</span>
+          <div style="font-size:0.65rem;color:#475569;margin-top:2px;line-height:1.3;">
+            年30〜45兆円の巨額Capex<br>未開始リース累計約100兆円
           </div>
-        </div>
+        </button>
+
+        <!-- Anthropic -->
+        <button type="button" class="arrow-badge" data-rel="anthropic_cloud" style="cursor:pointer;background:#fffbeb;border:1.5px solid #f59e0b;border-radius:8px;padding:0.5rem 0.3rem;text-align:center;">
+          <div style="font-size:0.75rem;font-weight:800;color:#b45309;">A\I Anthropic</div>
+          <div style="font-size:0.65rem;color:#78350f;margin-top:2px;">
+            Claudeモデル<br>マルチクラウド展開
+          </div>
+        </button>
+
+        <!-- シャドーバンク・借入代行 -->
+        <button type="button" class="arrow-badge" data-rel="shadow_bank_bdc" style="cursor:pointer;background:#faf5ff;border:1.5px solid #8b5cf6;border-radius:8px;padding:0.5rem 0.3rem;text-align:center;">
+          <div style="font-size:0.72rem;font-weight:800;color:#6b21a8;">💼 Blue Owl他</div>
+          <div style="font-size:0.65rem;color:#7c3aed;margin-top:2px;">
+            4兆円借入代行JV<br>プライベートクレジット
+          </div>
+        </button>
+
       </div>
 
-      <!-- 最下部矢印と受け皿 -->
-      <div style="text-align:center;margin-top:0.25rem;">
-        <button type="button" class="arrow-badge" data-rel="blueowl_bdc" style="cursor:pointer;background:#ffffff;border:1.5px solid #e11d48;color:#be123c;padding:0.3rem 0.65rem;border-radius:6px;font-size:0.75rem;font-weight:700;box-shadow:var(--shadow);">
-          ⬇ P/NAV割れ・個人＆年金へリスク波及
+      <!-- 【最下部】最終リスク波及先（システミック伝播） -->
+      <div style="border-top:1px dashed #cbd5e1;padding-top:0.4rem;text-align:center;">
+        <button type="button" class="arrow-badge" data-rel="shadow_bank_bdc" style="cursor:pointer;background:#ffffff;border:1.5px solid #e11d48;color:#be123c;padding:0.3rem 0.75rem;border-radius:6px;font-size:0.72rem;font-weight:800;box-shadow:var(--shadow);">
+          ⬇ P/NAV割れ・個人投資家＆年金基金へリスク直撃 ⬇
         </button>
-        <div style="margin-top:0.35rem;font-size:0.75rem;color:#64748b;font-weight:600;">
-          👥 最終受け皿: 上場BDC（OBDC等）/ BBB格社債 / 年金基金
+        <div style="font-size:0.68rem;color:#64748b;margin-top:2px;">
+          上場BDC（OBDC等）/ BBB格社債 / CLO（ローン担保証券）
         </div>
       </div>
 
     </div>
 
-    <!-- 右側：選択された関係の詳細解説パネル（添付MOTAスタイルの説明枠） -->
+    <!-- 右側：選択された循環ルートの詳細解説パネル（添付MOTAスタイルの説明枠） -->
     <div id="rel-detail-card" style="background:#ffffff;border:1.5px solid #cbd5e1;border-radius:10px;padding:1.25rem;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:flex-start;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-        <h4 id="rd-title" style="margin:0;font-size:1.05rem;color:#0f172a;font-weight:800;">Meta ➔ Blue Owl Capital</h4>
-        <span id="rd-badge" style="font-size:0.75rem;padding:2px 8px;border-radius:4px;background:#dbeafe;color:#1e40af;font-weight:700;">借入代行JV（オフバランス）</span>
+        <h4 id="rd-title" style="margin:0;font-size:1.05rem;color:#0f172a;font-weight:800;">OpenAI ➔ NVIDIA</h4>
+        <span id="rd-badge" style="font-size:0.75rem;padding:2px 8px;border-radius:4px;background:#dcfce7;color:#15803d;font-weight:700;">$1,000億 GPU発注</span>
       </div>
       
       <div style="margin-bottom:0.75rem;padding:0.6rem 0.75rem;background:#f8fafc;border-left:3px solid #2563eb;border-radius:4px;">
-        <div style="font-size:0.75rem;color:#64748b;font-weight:700;">■ 貸借・契約の関係</div>
+        <div style="font-size:0.75rem;color:#64748b;font-weight:700;">■ 資金の流れと関係性</div>
         <div id="rd-relation" style="font-size:0.85rem;color:#0f172a;margin-top:0.2rem;line-height:1.5;">
-          Metaの巨大データセンター建設を、Blue Owl主導ファンドが借入を肩代わりして実行。
+          OpenAIは次世代モデル（GPT-5、Orion等）の学習・推論のため、NVIDIA製GPUを天文学的規模で発注。
         </div>
       </div>
 
       <div style="margin-bottom:0.75rem;padding:0.6rem 0.75rem;background:#f8fafc;border-left:3px solid #10b981;border-radius:4px;">
         <div style="font-size:0.75rem;color:#64748b;font-weight:700;">■ 金額・調達規模</div>
         <div id="rd-amount" style="font-size:0.88rem;color:#047857;font-weight:800;margin-top:0.2rem;">
-          総事業費 270億ドル（約4.0兆円） / 出資比率: Blue Owl 80% : Meta 20%
+          総額 約1,000億ドル（約15兆円）規模のGPU調達合意
         </div>
       </div>
 
       <div style="margin-bottom:0.75rem;padding:0.6rem 0.75rem;background:#f8fafc;border-left:3px solid #8b5cf6;border-radius:4px;">
-        <div style="font-size:0.75rem;color:#64748b;font-weight:700;">■ オフバランスの仕組み（なぜ借入代行か）</div>
+        <div style="font-size:0.75rem;color:#64748b;font-weight:700;">■ 循環（ラウンドトリッピング）のカラクリ</div>
         <div id="rd-scheme" style="font-size:0.83rem;color:#334155;margin-top:0.2rem;line-height:1.5;">
-          Metaが自社で直接借金すると負債比率が悪化するため、Blue Owl側が80%出資する合弁会社（JV）にプライベートクレジット融資を組ませて建設。Metaは完成後に長期オペレーティング・リース（注記の簿外債務）として借り受ける仕組み。
+          NVIDIAはOpenAIの最新ラウンドに直接出資しつつ、出資した資金以上のGPUをOpenAIに買わせる。出資がそのままNVIDIAの売上・利益へ直結する自己循環（ベンチャーラウンドトリッピング）。
         </div>
       </div>
 
       <div style="padding:0.75rem;background:#fff1f2;border:1px solid #fecdd3;border-left:4px solid #ef4444;border-radius:4px;">
         <div style="font-size:0.78rem;color:#9f1239;font-weight:800;">🔥 もしここが崩れたら？（連鎖破綻リスク）</div>
         <div id="rd-risk" style="font-size:0.83rem;color:#881337;margin-top:0.25rem;line-height:1.5;">
-          AI需要が減速してMetaがリース支払いを絞ったり解約した場合、4兆円の借金を背負っているBlue Owlのファンド出資者（年金基金や個人投資家）に損失が一気に直撃します。
+          OpenAIが資金難で発注を凍結した場合、NVIDIAの最大の成長ドライバーが停止。GPU在庫過剰と株価暴落のトリガーになります。
         </div>
       </div>
     </div>
@@ -407,7 +471,7 @@ footer{margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
   <!-- 3大ドミノ倒しシナリオ -->
   <div style="margin-top:1.25rem;border-top:1px dashed #cbd5e1;padding-top:1rem;">
     <div style="font-weight:800;color:#0f172a;font-size:0.95rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem;">
-      <span>⚡</span><span>連鎖破綻のシミュレーション（どこが崩れるとどう波及するか）</span>
+      <span>⚡</span><span>もし一つが崩れたら？ 3大連鎖破綻（ドミノ倒し）シナリオ</span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:0.9rem;">
       <div style="background:#f8fafc;padding:0.9rem;border:1px solid #e2e8f0;border-left:4px solid #ef4444;border-radius:6px;">
@@ -1187,57 +1251,87 @@ footer{margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
     });
   });
 
-  // 🕸️ AIインフラ債務 相関図の連動インタラクション（MOTAスタイル）
+  // 🕸️ AIエコシステムの資金循環 ＆ 連鎖破綻マップ（インタラクティブ連動）
   var REL_DATA = {
-    msft_blueowl: {
-      title: "Meta ➔ Blue Owl Capital",
-      badge: "借入代行JV（オフバランス）",
+    openai_nvidia: {
+      title: "OpenAI ➔ NVIDIA",
+      badge: "$1,000億 GPU発注",
+      badgeBg: "#dcfce7",
+      badgeColor: "#15803d",
+      relation: "OpenAIは次世代モデル（GPT-5、Orion等）の学習・推論のため、NVIDIA製GPUを天文学的規模で発注。",
+      amount: "総額 約1,000億ドル（約15兆円）規模のGPU調達合意",
+      scheme: "NVIDIAはOpenAIの最新ラウンドに直接出資しつつ、出資した資金以上のGPUをOpenAIに買わせる。出資がそのままNVIDIAの売上・利益へ直結する自己循環（ベンチャーラウンドトリッピング）。",
+      risk: "OpenAIが資金難で発注を凍結した場合、NVIDIAの最大の成長ドライバーが停止。GPU在庫過剰と株価暴落のトリガーになります。"
+    },
+    msft_openai: {
+      title: "Microsoft ⇆ OpenAI",
+      badge: "$580億出資 ⇄ 還流",
       badgeBg: "#dbeafe",
       badgeColor: "#1e40af",
-      relation: "Metaの巨大データセンター（Hyperion）建設を、Blue Owl主導ファンドが借入を肩代わりして実行。",
-      amount: "総事業費 270億ドル（約4.0兆円） / 出資比率: Blue Owl 80% : Meta 20%",
-      scheme: "Metaが自社で直接借金すると負債比率が悪化するため、Blue Owl側が80%出資する合弁会社（JV）にプライベートクレジット融資を組ませて建設。Metaは完成後に長期オペレーティング・リース（注記の簿外債務）として借り受ける仕組み。",
-      risk: "AI需要が減速してMetaがリース支払いを絞ったり解約した場合、4兆円の借金を背負っているBlue Owlのファンド出資者（年金基金や個人投資家）に損失が一気に直撃します。"
+      relation: "Microsoftが巨額資金とAzure計算枠を供給し、OpenAIは売上の大半をAzure利用料としてMicrosoftへ返還。",
+      amount: "累計出資 約130億ドル ＋ 評価額に基づく巨額枠 / クラウド返還 年間数千億円",
+      scheme: "MSFTの出資 ➔ OpenAIの計算コスト ➔ MSFTのクラウド売上計上。外から見るとMSFTのAzureが急成長しているように見えるが、実態は自社が出資したマネーの循環。",
+      risk: "OpenAIの赤字が拡大し資金枯渇した場合、MSFTが抱える約50兆円の未開始リース等のインフラ投資が巨額減損リスクに直面。"
     },
-    openai_msft: {
-      title: "OpenAI ➔ Microsoft",
-      badge: "計算枠保証・赤字肩代わり",
-      badgeBg: "#ffe4e6",
-      badgeColor: "#9f1239",
-      relation: "OpenAIの天文学的な学習・推論コストを、Microsoftが巨額出資およびAzure計算枠提供で全面バックアップ。",
-      amount: "累積出資 約130億ドル ＋ 年間数千億円〜1兆円規模のAzure利用枠",
-      scheme: "OpenAIは未上場で売上をはるかに上回る巨額赤字を計上中。MSFTは株式（出資分）を持ちつつ、Azureのサーバー・インフラを優先提供。OpenAIの計算コスト＝MSFTの将来売上として循環構造を形成。",
-      risk: "OpenAIの収益化難航・資金枯渇時、MSFTが計上している未開始リース約50兆円の償却・減損リスクが顕在化。MSFTの信用力低下とハイパースケーラー投資急停止のトリガーになります。"
-    },
-    msft_coreweave: {
-      title: "Microsoft ➔ CoreWeave ➔ Blackstone / Blue Owl",
-      badge: "1.1兆円GPU担保借入",
+    bigtech_nvidia: {
+      title: "Google / Meta / Amazon ➔ NVIDIA",
+      badge: "$3,000億 GPU爆買い",
       badgeBg: "#fef3c7",
       badgeColor: "#92400e",
-      relation: "CoreWeave（ネオクラウド）がNVIDIA製GPUを担保に巨額借入。その売上裏付けがMicrosoftの長期利用契約。",
-      amount: "借入総額 約75億ドル（約1.1兆円） / 設備投資計画 数百億ドル",
-      scheme: "CoreWeaveは格付けB+のジャンク級だが、Blackstone・Blue Owl・Coatue等のシャドーバンクが「GPUそのもの」と「Microsoftの長期契約」を担保に巨額の融資を実行。MSFTのバランスシートを汚さずにGPU計算力を確保。",
-      risk: "新型GPU（Blackwell等）登場で旧世代GPUの担保価値が暴落した場合、融資ファンドの担保割れが発生。CoreWeaveが債務不履行に陥れば、貸し手ファンドに巨額損失が生じ、MSFTのインフラ調達にも急ブレーキがかかります。"
+      relation: "自社AIクラウドと独自モデル開発のため、NVIDIAのH100/Blackwellを競い合うように買い占め。",
+      amount: "メガテック合計で年間約2,000億〜3,000億ドル（約30兆〜45兆円）の設備投資（Capex）",
+      scheme: "株主からの「AI投資で遅れをとるな（FOMO: 取り残される恐怖）」という圧力により、投資回収の目処が立たないままGPU購入を加速。利益の大半がNVIDIAへ吸い上げられる構造。",
+      risk: "投資家から「巨額Capexの費用対効果（ROI）が見合わない」と批判され各社が一斉に購入を絞ると、NVIDIAの売上が急ブレーキ。"
     },
-    oracle_blueowl: {
-      title: "OpenAI / Oracle ➔ Blue Owl Capital",
-      badge: "2.2兆円データセンター投資",
-      badgeBg: "#f3e8ff",
-      badgeColor: "#6b21a8",
-      relation: "OpenAIがOracleからAIクラウドを調達し、Oracleはその巨大DC（テキサス州アビリーンなど）をBlue Owl等からの出資・リースで建設。",
-      amount: "施設投資 約150億ドル（約2.2兆円） / 数GW規模のAIキャンパス",
-      scheme: "Oracleが直接背負いきれない巨額の設備投資を、Blue Owl等のプライベートクレジット会社が資金調達・保有し、Oracleへリース。その究極の利用者がOpenAIという重層的な又貸し構造。",
-      risk: "OpenAI ➔ Oracle ➔ Blue Owl という3重連鎖。頂点のOpenAIが利用料を払えなくなるとOracleのリース支払いが滞り、Blue Owlの2兆円超の投融資が焦げ付き、BDCや年金基金へ損失が直撃します。"
+    anthropic_cloud: {
+      title: "Google / Amazon ⇆ Anthropic",
+      badge: "出資 ⇄ クラウド還元",
+      badgeBg: "#ffedd5",
+      badgeColor: "#c2410c",
+      relation: "AnthropicはOpenAIの対抗馬としてメガテック2社から出資を受け、その見返りにAWSとGCPを主要クラウドとして利用。",
+      amount: "Amazon最大40億ドル ＋ Google最大20億ドル出資",
+      scheme: "Microsoft ⇆ OpenAI と全く同じ構図。出資契約に「クラウド利用コミットメント」が含まれており、出資金がそのまま出資元メガテックのクラウド売上として回収される。",
+      risk: "Anthropicのモデル競争力低下や収益化遅延により、メガテックの出資持分減損と未回収クラウド債権が発生。"
     },
-    blueowl_bdc: {
-      title: "Blue Owl / シャドーバンク ➔ 上場BDC・年金基金",
-      badge: "最終リスク波及先（システミック伝播）",
+    oracle_nvidia: {
+      title: "Oracle ⇆ NVIDIA ⇆ OpenAI",
+      badge: "$100億出資 ⇄ DC提供",
       badgeBg: "#fee2e2",
       badgeColor: "#991b1b",
-      relation: "プライベートクレジット各社が組成したAIインフラ債権を、上場BDC（ビジネス開発会社）や年金基金・富裕層が保有。",
-      amount: "プライベートクレジット市場全体で約1.7兆ドル（約250兆円） / うち急増するAI・DC特化債権",
-      scheme: "高利回りを求める個人投資家や機関投資家が、Blue Owl Capital Corporation（OBDC）などの上場BDC株式やプライベートファンドを通じて間接的にAIデータセンターの借入を支えている。",
-      risk: "データセンターの空室化や延滞が発生した瞬間、BDCの純資産価値（NAV）が急減し、株価のディスカウント（P/NAV割れ）と配当停止が発生。2008年サブプライム証券と同様に、一般の金融市場へ危機が波及します。"
+      relation: "OracleはNVIDIAと最も緊密に組み、最新GPUクラスタを構築。OpenAIへ大規模な計算資源を貸し出し。",
+      amount: "Oracleの設備投資 数百億ドル / OpenAI向け巨大DC契約 150億ドル（約2.2兆円）",
+      scheme: "Oracleのバランスシートで背負いきれない分は、テキサス州アビリーンのようにBlue Owl等のファンドに借入代行させ、自社はリースでOpenAIへ又貸し。",
+      risk: "OpenAIの利用減退 ➔ OracleのDC空室化 ➔ 借入返済不能と社債格下げ。"
+    },
+    coreweave_msft: {
+      title: "CoreWeave ⇆ Microsoft ⇆ Blackstone",
+      badge: "1.1兆円GPU担保借入",
+      badgeBg: "#f3e8ff",
+      badgeColor: "#6b21a8",
+      relation: "CoreWeave（ネオクラウド）がNVIDIA製GPUを担保に巨額借入。その売上裏付けがMicrosoftの長期利用契約。",
+      amount: "借入総額 75億ドル（約1.1兆円） / 施設投資計画 数百億ドル",
+      scheme: "CoreWeaveは格付けB+のジャンク級だが、Blackstone・Blue Owl等のシャドーバンクが「GPU現物」と「MSFT契約」を担保に巨額融資。MSFTはバランスシートを汚さずにGPU計算力を確保。",
+      risk: "新型GPU登場で旧GPUの担保価値が暴落した場合、融資ファンドの担保割れが発生し連鎖破綻。"
+    },
+    musk_xai: {
+      title: "Tesla ➔ Elon Musk ➔ X ➔ xAI ➔ NVIDIA",
+      badge: "株売却益 ➔ GPU爆買い",
+      badgeBg: "#e7e5e4",
+      badgeColor: "#292524",
+      relation: "イーロン・マスクがテスラ株売却資金等を原資にTwitter（X）を買収、さらにxAIを立ち上げ、テネシー州メンフィスに10万基のH100クラスタ（Colossus）を電撃構築。",
+      amount: "テスラ株売却益・X買収数兆円 ＋ xAI調達60億ドル（約9,000億円）",
+      scheme: "XのデータでGrokを学習させ、巨額の資金でNVIDIA GPUを直接爆買い。さらにTeslaのFSD向けGPUとも連携。",
+      risk: "xAIの収益化難航時にテスラ株への売り圧力や、Xの債務（銀行団の130億ドル不良債権）と絡んだ多重リスク。"
+    },
+    shadow_bank_bdc: {
+      title: "Blue Owl / シャドーバンク ➔ 上場BDC・年金基金",
+      badge: "最終リスク波及先（システミック伝播）",
+      badgeBg: "#ffe4e6",
+      badgeColor: "#be123c",
+      relation: "Metaの270億ドルJV（80%借入代行）などを手掛けるBlue Owl等のファンドが、上場BDC（OBDC等）や年金基金を通じて個人・機関投資家の資金を吸収。",
+      amount: "MetaのJV借入 270億ドル（約4兆円） / プライベートクレジット市場全体で約1.7兆ドル（約250兆円）",
+      scheme: "銀行規制（バーゼル等）を回避したシャドーバンクが、メガテックの巨額AI投資の借入を肩代わりして簿外化。",
+      risk: "DC空室化や延滞が発生した瞬間、BDCの純資産価値（NAV）が急減し、株価のP/NAV割れと配当停止が発生。2008年サブプライム証券と同様に一般金融市場へ危機波及。"
     }
   };
 
